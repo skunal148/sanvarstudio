@@ -115,42 +115,42 @@ const portfolioItems = [
     "title": "Hippie Harvest – Fruit Ninja Style",
     "description": "A tropical fruit-slicing game inspired by Fruit Ninja, built in Phaser 3. Set on a sunny beach, players swipe to slice bananas, mangoes, and more with satisfying splash effects and combo scoring.",
     "thumbnailUrl": "thumbnails/hippieharvest.png",
-    "gameUrl": "https://hippie-harvest.com"
+    "playableUrl": "https://hippie-harvest.com"
   },
   {
     "id": "spinwheel",
     "title": "Linen Chest – Spin to Win",
     "description": "Holiday-themed prize wheel game made for kiosks and mobile. Users spin to win discounts, gifts, and cash rewards. Built in Phaser 3 with festive visuals and seamless kiosk compatibility.",
     "thumbnailUrl": "thumbnails/spinwheel.png",
-    "gameUrl": "https://spinthewheel.linenchest.com"
+    "playableUrl": "https://spinthewheel.linenchest.com"
   },
   {
     "id": "strategy-empire",
     "title": "Rolo Crush – Match 3 in Space",
     "description": "Space-themed match-3 combat game where players match tiles to defeat enemies across 15 levels. Features power-ups, animations, and responsive gameplay. Built in Phaser 3 for cross-platform play.",
     "thumbnailUrl": "thumbnails/match3.png",
-    "gameUrl": "https://snktcodes.github.io/rolacrush/"
+    "playableUrl": "https://snktcodes.github.io/rolacrush/"
   },
   {
     "id": "crypto-bonanza",
     "title": "Bonanza Frenzy – HTML5 Slot Game",
     "description": "Fast-paced slot game with multipliers and big-win animations. Match themed symbols to win up to $20, with auto-spin and manual spin modes offering varied play styles. Built in Phaser 3.",
     "thumbnailUrl": "thumbnails/cryptoBonanza.jpeg",
-    "gameUrl": "https://snktcodes.github.io/cryptoBonaza/"
+    "playableUrl": "https://snktcodes.github.io/cryptoBonaza/"
   },
   {
     "id": "speed-pool",
     "title": "Speed Pool – Rapid-Fire Challenge",
     "description": "Race against the clock in this single-player pool game. Pot balls quickly to score combos and multipliers. Features responsive controls, visual guides, and fast-paced gameplay.",
     "thumbnailUrl": "thumbnails/speedPool.jpeg",
-    "gameUrl": "https://snktcodes.github.io/speedPoolGame/"
+    "playableUrl": "https://snktcodes.github.io/speedPoolGame/"
   },
   {
     "id": "next-level",
     "title": "Willy's Edge – Platformer Journey",
     "description": "Join Willy’s Edge Academy in this multi-phase platformer. Train, collect stars, avoid traps, and prove your skills in the office to win. Built with layered progression and character selection.",
     "thumbnailUrl": "thumbnails/willysEdge.png",
-    "gameUrl": "https://snktcodes.github.io/wileyedge_nxtlvlfinal_/",
+    "playableUrl": "https://snktcodes.github.io/wileyedge_nxtlvlfinal_/",
     "displayMode": "landscape"
   }
 ];
@@ -171,6 +171,7 @@ const PortfolioPage = () => {
                 className="portfolio-thumbnail-link" // New class for styling the link
                 aria-label={`Play ${item.title}`} // Accessibility improvement
               >
+                
                 <img
                   src={item.thumbnailUrl}
                   alt={`${item.title} thumbnail`}
@@ -185,6 +186,7 @@ const PortfolioPage = () => {
                 className="portfolio-item-image"
               />
             ) : null}
+
 
             <div className="portfolio-item-content">
               <h3>{item.title}</h3>
