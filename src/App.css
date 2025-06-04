@@ -403,10 +403,9 @@ a {
 /* --- Services Page Specific Styles --- */
 .services-list {
   width: 100%; /* Ensure it takes full width of .content-section */
-  display: flex; /* Enable flexbox for side-by-side layout */
-  flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens or if there are many items */
+  display: grid; /* Enable flexbox for side-by-side layout */
+  grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem; /* Space between service items */
-  justify-content: flex-start; /* Align items to the start of the container */
 }
 
 .service-item {
@@ -416,20 +415,22 @@ a {
   background-color: #f0e3cd; /* Optional: a background color for the box, can be var(--pale-ivory) or transparent */
   box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Optional: subtle shadow for depth */
   /* Flex properties for each item */
-  flex: 1 1 40%; /* Allows items to grow and shrink. Aims for roughly 2 items per row. Adjust '40%' as needed. */
-  min-width: 280px; /* Minimum width before wrapping. Adjust as needed. */
-  box-sizing: border-box; /* Ensures padding and border are included in the item's total width/height */
-  display: flex; /* Optional: if you want to use flex for content within the item too */
-  flex-direction: column; /* Stacks thumbnail, h3, p vertically */
+  display: flex; /* Allows items to grow and shrink. Aims for roughly 2 items per row. Adjust '40%' as needed. */
+  flex-direction: row;    /* Arrange image and text side-by-side */
+  align-items: flex-start; /* Align items to the top. Use 'center' if you prefer vertical centering. */
+  gap: 1.5rem;            /* Space between thumbnail and text content */
 }
 
 .service-item-thumbnail {
-  width: 100%; /* Make thumbnail take full width of its container */
-  height: auto; /* Maintain aspect ratio. Or set a fixed height e.g., 180px */
-  max-height: 200px; /* Optional: constrain max height */
-  object-fit: cover; /* How the image should be resized to fit its container */
-  margin-bottom: 1rem; /* Space below the thumbnail */
-  border-radius: 4px; /* Optional: slightly rounded corners for the image */
+  flex-shrink: 0;     /* Prevent thumbnail from shrinking */
+  width: 100px;       /* MODIFIED: Define a specific width for the thumbnail */
+  height: 100px;      /* MODIFIED: Define a specific height (e.g., for a square) */
+  object-fit: cover;  /* Ensure image covers the area, might crop */
+  border-radius: 6px; /* Slightly rounded corners for the thumbnail */ /* */
+}
+
+.service-item-text-content{
+  flex: 1;
 }
 
 .service-item h3 {
@@ -447,29 +448,26 @@ a {
 }
 
 /* Responsive adjustments for service items if needed */
-@media (max-width: 768px) {
-  .service-item {
-    flex-basis: 100%; /* Stack items vertically on smaller screens */
+@media (max-width: 768px) { /* For tablets and smaller screens */
+  .services-list {
+    grid-template-columns: 1fr; /* Stack to a single column */
   }
+  /* Optional: If you want image above text when stacked in single column */
+  /*
+  .service-item {
+    flex-direction: column;
+    align-items: center; // Center image and text when stacked
+  }
+  .service-item-thumbnail {
+    width: 150px; // Or a percentage like 50%
+    height: 150px;
+    margin-bottom: 1rem; // Add space below image when stacked
+  }
+  .service-item-text-content {
+    text-align: center; // Center text when stacked
+  }
+  */
 }
-
-@media (min-width: 769px) and (max-width: 992px) {
-    .service-item {
-        flex-basis: calc(50% - 0.75rem); /* Ensure two items fit with the gap */
-    }
-}
-
-@media (min-width: 993px) {
-    .service-item {
-        flex-basis: calc(33.333% - 1rem); /* Example for 3 items per row on larger screens, adjust as needed */
-        /* If you strictly want max 2 items per row, you can use calc(50% - 0.75rem) here too */
-    }
-    /* If the third item should be full width on large screens, you'll need specific targeting for it,
-       or wrap the first two items in a separate div.
-       For now, all items will flow according to the flex-basis.
-    */
-}
-
 
 /* --- Portfolio Page Specific Styles --- */
 /* .portfolio-grid styles remain the same */
