@@ -1,0 +1,734 @@
+/* --- Global Styles & Variables --- */
+:root {
+  --pale-ivory: #F8F5E2;
+  --smoke-signal: #292528;
+  --font-primary: 'Poppins', sans-serif; 
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--pale-ivory);
+  color: var(--smoke-signal);
+  line-height: 1.6;
+  overflow-x: hidden; 
+}
+
+html { /* Added for smooth scroll on direct hash links */
+  scroll-behavior: smooth;
+}
+
+/* Basic reset for buttons */
+button { 
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --- Icon Button Styling --- */
+.icon-button { 
+  padding: 0.5rem; 
+  border-radius: 0.375rem; 
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+}
+.icon-button:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.hamburger-icon:focus { 
+  box-shadow: 0 0 0 2px var(--pale-ivory), 0 0 0 4px var(--smoke-signal);
+}
+.close-icon:focus { 
+   box-shadow: 0 0 0 2px var(--smoke-signal), 0 0 0 4px var(--pale-ivory);
+}
+
+/* --- Navigation Styles (main-nav) --- */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 0.75rem 1rem; 
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  background-color: var(--pale-ivory); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+  min-height: 50px; 
+}
+
+.logo-placeholder {
+  font-size: 1.1rem; 
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--smoke-signal);
+  transition: opacity 0.3s ease, font-size 0.3s ease;
+  white-space: nowrap; 
+}
+.logo-placeholder:hover {
+  opacity: 0.8;
+}
+
+.nav-right-elements {
+  display: flex;
+  align-items: center;
+}
+
+.desktop-nav-menu {
+  display: none; 
+  align-items: center;
+  gap: 0.75rem; 
+}
+
+.desktop-nav-link {
+  font-size: 0.85rem; 
+  font-weight: 400;
+  color: var(--smoke-signal);
+  padding: 0.5rem 0.4rem; 
+  transition: opacity 0.3s ease, color 0.3s ease;
+  position: relative; 
+  white-space: nowrap; 
+}
+.desktop-nav-link:hover {
+  opacity: 0.7;
+}
+
+.hamburger-icon { 
+  display: block; 
+}
+
+@media (min-width: 375px) {
+  .main-nav {
+    padding: 0.75rem 1.25rem;
+  }
+  .logo-placeholder {
+    font-size: 1.2rem; 
+  }
+}
+
+@media (min-width: 768px) { 
+  .main-nav {
+    padding: 1.5rem 2rem; 
+    min-height: 60px;
+  }
+  .logo-placeholder {
+    font-size: 1.5rem; 
+  }
+  .desktop-nav-menu {
+    display: flex !important; 
+    gap: 1rem; 
+  }
+  .desktop-nav-link {
+    font-size: 1rem; 
+    padding: 0.5rem 0.75rem;
+  }
+  .hamburger-icon { 
+    display: none !important; 
+  }
+}
+
+/* --- Overlay Menu Styles (For Mobile Hamburger Menu) --- */
+.overlay-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 40; 
+  background-color: var(--smoke-signal);
+  color: var(--pale-ivory);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); 
+}
+
+.overlay-menu.open {
+  transform: translateX(0);
+}
+
+.overlay-menu-close-button-container {
+  position: absolute;
+  top: 1.25rem; 
+  right: 1.25rem; 
+}
+
+@media (min-width: 768px) { 
+  .overlay-menu-close-button-container {
+    top: 2rem; 
+    right: 2rem; 
+  }
+}
+
+.overlay-menu-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem; 
+}
+
+.overlay-menu-link {
+  font-size: 1.875rem; 
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  transition: opacity 0.3s ease;
+}
+.overlay-menu-link:hover {
+  opacity: 0.75;
+}
+
+@media (min-width: 768px) { 
+  .overlay-menu-link {
+    font-size: 2.25rem; 
+  }
+}
+
+.overlay-menu-footer {
+  position: absolute;
+  bottom: 2.5rem; 
+  font-size: 0.875rem; 
+  opacity: 0.7;
+}
+
+
+/* --- Hero Section Styles --- */
+.hero-section {
+  min-height: 100vh;
+  background-color: var(--pale-ivory); /* */
+  display: flex;            /* MODIFIED: Use flexbox for side-by-side layout */
+  flex-direction: row;      /* MODIFIED: Arrange items in a row */
+  align-items: center;      /* MODIFIED: Vertically align video and text containers */
+  justify-content: space-evenly; /* MODIFIED: Distribute space, or use space-between/space-around */
+  padding: 2rem;            /* MODIFIED: Overall padding for the section */
+  /* Adjust padding-top to ensure content is below fixed nav */
+  /* Nav min-height is 50px (or 60px on larger screens) */ /* */
+  padding-top: calc(50px + 3rem); /* e.g., nav height + desired space */
+  position: relative;
+  color: var(--smoke-signal); /* */
+  box-sizing: border-box; /* */
+  gap: 2rem;                /* Space between video and text areas */
+  overflow: hidden; /* Prevent content from spilling if sizing is tricky during resize */
+}
+
+/* Responsive: Stack video and text on smaller screens */
+@media (max-width: 900px) { /* Adjust this breakpoint as needed */
+  .hero-section {
+    flex-direction: column;   /* Stack them vertically */
+    justify-content: center;  /* Center them vertically when stacked */
+    padding-top: calc(50px + 2rem); /* Adjust padding for stacked layout */
+    text-align: center;       /* Center align text for a better stacked look */
+  }
+  .hero-video-container,
+  .hero-text-container {
+    flex-basis: auto; /* Reset flex-basis for stacking */
+    width: 100%;      /* Allow them to take more width when stacked */
+    max-width: 600px; /* Optional: constrain width in stacked view */
+    margin-bottom: 2rem; /* Add space between video and text when stacked */
+  }
+  .hero-text-container .hero-content {
+    width: 100%;
+    text-align: center; /* Center text within hero-content when stacked */
+    align-items: center; /* If hero-content is flex, this centers its items */
+  }
+   /* Ensure h1 and p inside hero-content are also centered */
+  .hero-text-container .hero-content h1,
+  .hero-text-container .hero-content p {
+    text-align: center;
+    margin-left: auto; /* Helps in centering block elements if they have a width */
+    margin-right: auto;
+  }
+  .hero-section { /* Re-adjust top padding for larger screens after stacking modification */
+      padding-top: calc(60px + 3rem); /* For 768px+ nav height */
+  }
+}
+
+
+.hero-video-container {
+  flex: 1 1 60%; /* Adjust basis/grow/shrink as needed, e.g., 40% or 50% */
+  display: flex;
+  justify-content: center; /* Center video within its container */
+  align-items: center;
+  max-width: 60%; /* Prevent video from becoming too large */
+}
+
+.hero-video {
+  width: 100%;      /* Make video responsive within its container */
+  max-width: 800px; /* Max width for the video itself */
+  height: auto;     /* Maintain aspect ratio */
+  border-radius: 10px; /* Optional: for rounded corners */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15); /* Optional: subtle shadow */
+}
+
+.hero-text-container {
+  flex: 1 1 40%; /* Adjust basis/grow/shrink, giving slightly more space to text */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the .hero-content within */
+}
+
+/* Styles for .hero-content (the actual text block) */
+/* This was: width: 90%; align-items: flex-start; text-align:left; */
+.hero-text-container .hero-content {
+  width: 100%; /* Now takes full width of its new parent, .hero-text-container */
+  text-align: left; /* Keep text left-aligned */ /* */
+  /* align-items: flex-start; /* if .hero-content itself is a flex container for its children */
+}
+
+/* Adjust h1 and p styles within .hero-section for the new layout if needed */
+.hero-section h1 {
+  font-size: 1.65rem; /* Base size, adjust as needed */ /* */
+  font-weight: 700; /* */
+  line-height: 1.2; /* Adjusted previously, keep it sensible */
+  margin-top: 0;
+  margin-bottom: 0.5rem; /* Space between the two H1s or H1 and P */
+}
+
+.hero-section p {
+  font-size: 1rem; /* Base size */ /* */
+  opacity: 0.8; /* */
+  line-height: 1.7; /* Adjusted previously */
+  max-width: 100%; /* Was 36rem, allow it to use the space in its container */
+  margin-top: 0.5rem; /* Space above the paragraph */
+}
+
+/* Keep your existing responsive font size media queries for .hero-section h1 and p */
+/* They should adapt to the new container widths. Example: */
+@media (min-width: 480px) {
+  .hero-section h1 { font-size: 2.25rem; } /* */
+  .hero-section p { font-size: 1.125rem; } /* */
+}
+@media (min-width: 640px) {
+  .hero-section h1 { font-size: 3rem; } /* */
+  .hero-section p { font-size: 1.25rem; } /* */
+}
+/* etc. for other breakpoints */
+@media (min-width: 768px) {
+    .hero-section { /* Re-adjust top padding for larger screens */
+        padding-top: calc(60px + 4rem); /* For 768px+ nav height, increased top space */
+    }
+     .hero-section h1 { font-size: 3.75rem; margin-bottom: 1rem; } /* */
+     .hero-section p { font-size: 1.5rem; } /* */
+}
+
+@media (min-width: 1024px) {
+  .hero-section h1 { font-size: 4.5rem; } /* */
+}
+
+/* Remove or adjust .scroll-down-icon styles if you're not using it or need to reposition it.
+.scroll-down-icon { ... }
+*/
+/* --- General Content Section Styling --- */
+.page-padding { 
+  padding-top: 65px; 
+  padding-bottom: 1rem; 
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .page-padding {
+    padding-top: 80px; 
+    padding-bottom: 1.5rem;
+  }
+}
+
+.content-section { 
+  display: flex;
+  flex-direction: column; 
+  align-items: flex-start; 
+  text-align: left; 
+  font-size: 1rem; 
+  box-sizing: border-box;
+  width: 98%;
+  margin: auto;
+}
+
+.content-section h2 {
+  font-size: 2rem; 
+  margin-bottom: 1.5rem;
+  margin-right: auto;
+  color: var(--smoke-signal);
+  font-weight: 600; 
+}
+
+.content-section p {
+  line-height: 1.7; 
+  margin-bottom: 1rem;
+/*   margin-right: auto; */
+  text-align: left;
+  margin-top: 0;
+}
+
+
+@media (min-width: 768px) {
+  .content-section h2 {
+    font-size: 2.5rem; 
+  }
+   .content-section p {
+    font-size: 1.125rem;
+  }
+}
+
+
+/* Placeholder for other specific section styles */
+.bg-smoke-signal {
+  background-color: var(--smoke-signal);
+}
+.text-pale-ivory {
+  color: var(--pale-ivory);
+}
+.bg-pale-ivory {
+  background-color: var(--pale-ivory);
+}
+.text-smoke-signal {
+  color: var(--smoke-signal);
+}
+
+
+/* --- Services Page Specific Styles --- */
+.services-list {
+  width: 100%; /* Ensure it takes full width of .content-section */
+  display: flex; /* Enable flexbox for side-by-side layout */
+  flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens or if there are many items */
+  gap: 1.5rem; /* Space between service items */
+  justify-content: flex-start; /* Align items to the start of the container */
+}
+
+.service-item {
+  border: 1px solid var(--pale-ivory); /* Border around each service item */
+  padding: 1.5rem; /* Padding inside the border, around the content */
+  border-radius: 8px; /* Optional: rounded corners for the box */
+  background-color: #f0e3cd; /* Optional: a background color for the box, can be var(--pale-ivory) or transparent */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Optional: subtle shadow for depth */
+  /* Flex properties for each item */
+  flex: 1 1 40%; /* Allows items to grow and shrink. Aims for roughly 2 items per row. Adjust '40%' as needed. */
+  min-width: 280px; /* Minimum width before wrapping. Adjust as needed. */
+  box-sizing: border-box; /* Ensures padding and border are included in the item's total width/height */
+  display: flex; /* Optional: if you want to use flex for content within the item too */
+  flex-direction: column; /* Stacks thumbnail, h3, p vertically */
+}
+
+.service-item-thumbnail {
+  width: 100%; /* Make thumbnail take full width of its container */
+  height: auto; /* Maintain aspect ratio. Or set a fixed height e.g., 180px */
+  max-height: 200px; /* Optional: constrain max height */
+  object-fit: cover; /* How the image should be resized to fit its container */
+  margin-bottom: 1rem; /* Space below the thumbnail */
+  border-radius: 4px; /* Optional: slightly rounded corners for the image */
+}
+
+.service-item h3 {
+  font-size: 1.5rem; /* Adjust as needed */
+  font-weight: 600;
+  color: var(--smoke-signal);
+  margin-top: 0; /* Remove default top margin if any */
+  margin-bottom: 0.75rem;
+}
+
+.service-item p {
+  font-size: 1rem; /* Adjust as needed */
+  line-height: 1.6;
+  margin-bottom: 0; /* Remove default bottom margin if p is the last element */
+}
+
+/* Responsive adjustments for service items if needed */
+@media (max-width: 768px) {
+  .service-item {
+    flex-basis: 100%; /* Stack items vertically on smaller screens */
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .service-item {
+        flex-basis: calc(50% - 0.75rem); /* Ensure two items fit with the gap */
+    }
+}
+
+@media (min-width: 993px) {
+    .service-item {
+        flex-basis: calc(33.333% - 1rem); /* Example for 3 items per row on larger screens, adjust as needed */
+        /* If you strictly want max 2 items per row, you can use calc(50% - 0.75rem) here too */
+    }
+    /* If the third item should be full width on large screens, you'll need specific targeting for it,
+       or wrap the first two items in a separate div.
+       For now, all items will flow according to the flex-basis.
+    */
+}
+
+
+/* --- Portfolio Page Specific Styles --- */
+/* .portfolio-grid styles remain the same */
+.portfolio-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.portfolio-item {
+  background-color: #f0e3cd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(41, 37, 40, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* New class for the link wrapping the thumbnail */
+.portfolio-thumbnail-link {
+  display: block; /* Ensures the link takes up the image's block space */
+  text-decoration: none; /* Removes default underline from links */
+  cursor: pointer; /* Explicitly set cursor, though <a> tags usually have it */
+}
+
+.portfolio-item-image {
+  width: 100%;
+  height: 250px; /* Or your preferred height/aspect-ratio */
+  object-fit: cover;
+  display: block; /* Important for the image to behave correctly within the link */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* For hover effects */
+}
+
+/* Hover effect on the thumbnail image when the link is hovered */
+.portfolio-thumbnail-link:hover .portfolio-item-image {
+  transform: scale(1.03); /* Slight zoom effect */
+  opacity: 0.9; /* Slight dimming or could be used for an overlay effect */
+}
+
+.portfolio-item-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allows this area to take up remaining space */
+}
+
+.portfolio-item-content h3 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--smoke-signal);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-item-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--smoke-signal);
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.portfolio-item-tech {
+  font-size: 0.85rem !important;
+  opacity: 0.7 !important;
+  margin-top: 1rem;
+  margin-bottom: 1rem; /* Adjusted from 1.25rem as button is gone */
+}
+
+/* Responsive grid adjustments for portfolio (remain the same) */
+@media (min-width: 640px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .portfolio-item-content h3 {
+    font-size: 1.5rem;
+  }
+  .portfolio-item-content p {
+    font-size: 1rem;
+  }
+  .portfolio-grid {
+     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .portfolio-grid {
+     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+
+
+.button-primary {
+  padding: 0.6rem 1.2rem;
+  background-color: var(--smoke-signal);
+  color: var(--pale-ivory);
+  border-radius: 4px;
+  border: 1px solid var(--smoke-signal);
+}
+
+.button-primary:hover {
+  background-color: var(--pale-ivory);
+  color: var(--smoke-signal);
+  border: 1px solid var(--smoke-signal);
+}
+/* --- Contact Form Styles --- */
+.contact-form {
+  margin-top: 2rem;
+  width: 100%;/* Adjust max-width as needed */
+  /* Form itself will be left-aligned due to .content-section parent */
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--smoke-signal); /* */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #D1D5DB; /* Light grey border */
+  border-radius: 0.375rem; /* Tailwind's 'rounded-md' */
+  font-size: 1rem;
+  font-family: var(--font-primary); /* */
+  color: var(--smoke-signal); /* */
+  background-color: #FFFFFF; /* White background for fields */
+  box-sizing: border-box;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--smoke-signal); /* Darker border on focus */ /* */
+  box-shadow: 0 0 0 2px rgba(41, 37, 40, 0.2); /* Subtle focus ring, using smoke-signal with alpha */
+}
+
+.form-group textarea {
+  resize: vertical; /* Allow vertical resize, disable horizontal */
+  min-height: 120px;
+}
+
+.form-submit-button { /* Specific styling for the submit button if needed beyond .button-primary */
+  margin-top: 0.5rem; /* Add some space if error message is not present */
+  /* .button-primary styles will apply if you kept that class on the button */
+}
+
+.contact-form {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+/* Styles for the row containing Name and Email fields */
+.form-row {
+  display: flex;
+  flex-wrap: wrap; /* Allows fields to stack on very small screens if min-width is too large */
+  gap: 1.5rem;   /* This creates space BETWEEN the Name and Email fields */
+                 /* This div itself does not manage margin to elements below it;
+                    the .form-group for Subject will handle that. */
+}
+
+/* Target .form-group elements specifically within .form-row */
+.form-row .form-group {
+  flex: 1 1 calc(50% - 0.75rem); /* Each item takes up half the space minus half the gap (0.75rem is half of 1.5rem) */
+  min-width: 200px; /* Minimum width before fields might wrap or stack, adjust as needed */
+  margin-bottom: 0; /* Remove the default bottom margin, as the 'gap' in .form-row handles spacing
+                       and the overall .form-row is followed by other .form-group elements that have margin-bottom. */
+}
+
+/* Default .form-group styling (applies to Subject, Message, and also initially to Name/Email before override) */
+.form-group {
+  margin-bottom: 1.5rem; /* */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem; /* */
+  font-weight: 500; /* */
+  font-size: 0.9rem; /* */
+  color: var(--smoke-signal); /* */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%; /* */
+  padding: 0.75rem 1rem; /* */
+  border: 1px solid #D1D5DB; /* */
+  border-radius: 0.375rem; /* */
+  font-size: 1rem; /* */
+  font-family: var(--font-primary); /* */
+  color: var(--smoke-signal); /* */
+  background-color: #FFFFFF; /* */
+  box-sizing: border-box; /* */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* */
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+  outline: none; /* */
+  border-color: var(--smoke-signal); /* */
+  box-shadow: 0 0 0 2px rgba(41, 37, 40, 0.2); /* */
+}
+
+.form-group textarea {
+  resize: vertical; /* */
+  min-height: 120px; /* */
+}
+
+.form-submit-button {
+  margin-top: 0.5rem; /* */
+}
+
+.form-submission-success {
+  margin-top: 2rem; /* */
+  padding: 1rem 1.5rem; /* */
+  background-color: #E6FFFA; /* */
+  color: #2C7A7B; /* */
+  border: 1px solid #A7F3D0; /* */
+  border-radius: 0.375rem; /* */
+  text-align: center; /* */
+}
+
+.form-submission-error {
+  margin-bottom: 1rem; /* */
+  padding: 0.75rem 1rem; /* */
+  background-color: #FFF5F5; /* */
+  color: #C53030; /* */
+  border: 1px solid #FC8181; /* */
+  border-radius: 0.375rem; /* */
+  font-size: 0.9rem; /* */
+}
+
+/* Optional: Media query to stack Name and Email on very small screens */
+@media (max-width: 600px) { /* Adjust breakpoint as needed */
+  .form-row {
+    flex-direction: column; /* Stack Name and Email fields */
+    gap: 0; /* Remove horizontal gap when stacked */
+  }
+  .form-row .form-group {
+    margin-bottom: 1.5rem; /* Restore bottom margin for stacked items */
+    flex-basis: 100%; /* Make them full width when stacked */
+    min-width: 100%; /* Ensure they take full width */
+  }
+}
+
