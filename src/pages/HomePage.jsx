@@ -23,7 +23,7 @@ const HomePage = () => {
                         Crafting Interactive Experiences.
                     </h1>
                     <p>
-                        Pioneering Playable Ads & HTML5 Games.
+                        Pioneering 3D Games, Web Development, HTML5 Games & Playable Ads.
                     </p>
                 </div>
             </div>

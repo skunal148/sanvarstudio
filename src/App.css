@@ -258,16 +258,16 @@ a {
 
 
 .hero-video-container {
-  flex: 1 1 60%; /* Adjust basis/grow/shrink as needed, e.g., 40% or 50% */
+  flex: 1 1 70%; /* Adjust basis/grow/shrink as needed, e.g., 40% or 50% */
   display: flex;
   justify-content: center; /* Center video within its container */
   align-items: center;
-  max-width: 60%; /* Prevent video from becoming too large */
+  max-width: 70%; /* Prevent video from becoming too large */
 }
 
 .hero-video {
   width: 100%;      /* Make video responsive within its container */
-  max-width: 800px; /* Max width for the video itself */
+  max-width: 900px; /* Max width for the video itself */
   height: auto;     /* Maintain aspect ratio */
   border-radius: 10px; /* Optional: for rounded corners */
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15); /* Optional: subtle shadow */
@@ -423,8 +423,8 @@ a {
 
 .service-item-thumbnail {
   flex-shrink: 0;     /* Prevent thumbnail from shrinking */
-  width: 100px;       /* MODIFIED: Define a specific width for the thumbnail */
-  height: 100px;      /* MODIFIED: Define a specific height (e.g., for a square) */
+  width: 120px;       /* MODIFIED: Define a specific width for the thumbnail */
+  height: 120px;      /* MODIFIED: Define a specific height (e.g., for a square) */
   object-fit: cover;  /* Ensure image covers the area, might crop */
   border-radius: 6px; /* Slightly rounded corners for the thumbnail */ /* */
 }
@@ -731,37 +731,37 @@ a {
 }
 
 
-/* In App.css */
 
 /* In App.css */
 
 /* --- Brands Section Styles --- */
 .brands-container {
-  display: flex;
-  flex-wrap: wrap;
-  /* MODIFIED: Use space-around for more even distribution like apexexp.in */
-  justify-content: space-around;
-  align-items: center;
-  /* MODIFIED: Adjust gap if needed, or rely on flex-basis and margins of items */
-  gap: 2rem; /* You can adjust this or remove if using margins on items */
+  display: grid;
+  /* This creates as many columns as will fit, each at least 140px
+     and at most 1fr (a fraction of the available space).
+     This makes the grid responsive and items should align in columns. */
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 2rem 1.5rem; /* MODIFIED: Row gap of 2rem, Column gap of 1.5rem. Adjust as needed. */
   margin-top: 2.5rem; /* */
-  padding: 2rem 0; /* MODIFIED: Increased vertical padding for the container */
+  padding: 2rem 0; /* MODIFIED: Removed specific horizontal padding from container,
+                       rely on .content-section's padding for overall page alignment.
+                       If .content-section already provides side padding, this can be 2rem 0. */
+  width: 100%; /* Ensure it uses the full width of its parent (.content-section) */
+  box-sizing: border-box;
 }
 
 .brand-item {
-  /* MODIFIED: Add flex properties to control how many items per row */
-  flex: 0 1 18%; /* Example: Aims for roughly 5 items per row (100 / 18 ~ 5.5). Adjust as needed.
-                     Allows shrinking, but doesn't grow beyond its content.
-                     (100 / desired_items_per_row) -> e.g., 100/4 = 25%, 100/5 = 20%
-                     Subtract a bit for gaps or use box-sizing. */
-  min-width: 120px; /* Minimum width for a logo before it wraps */
-  padding: 0.5rem; /* Add some padding around each logo's clickable area */
-  box-sizing: border-box;
-  text-align: center; /* Center the logo within the item if link is block */
+  /* Flex properties are not needed here as grid handles placement */
+  padding: 0.5rem; /* MODIFIED: Reduced padding for a tighter logo fit if desired */
+  box-sizing: border-box; /* */
+  text-align: center; /* To center the <a> tag if it's inline-block */ /* */
+  display: flex; /* Added to help center the image perfectly within the grid cell */
+  justify-content: center;
+  align-items: center;
 }
 
 .brand-item a {
-  display: inline-block; /* Allows text-align center on parent to work for the block */
+  display: inline-block; /* Or block if you want the link to fill the .brand-item */ /* */
   transition: transform 0.3s ease, opacity 0.3s ease; /* */
 }
 
@@ -771,40 +771,39 @@ a {
 }
 
 .brand-logo {
-  max-height: 90px; /* MODIFIED: Increased from 50px. Adjust to your preference. */
-  max-width: 160px; /* MODIFIED: Slightly increased. Adjust based on your logos. */
-  width: auto;      /* */
-  transition: filter 0.3s ease, opacity 0.3s ease; /* Combined transitions */ /* */
-  vertical-align: middle; /* Good for images within links */
+  max-height: 100px; /* MODIFIED: Adjusted, was 70px. Set to your desired logo height. */ /* */
+  max-width: 100%;  /* Allow logo to scale down if container is narrower */
+  height: auto;     /* Maintain aspect ratio */
+  width: auto;      /* Allow it to scale based on height or container width */
+  transition: filter 0.3s ease, opacity 0.3s ease; /* */
+  vertical-align: middle; /* */
 }
 
-.brand-item a:hover .brand-logo { /* Apply hover effects to the logo when link is hovered */
+.brand-item a:hover .brand-logo {
   filter: grayscale(0%); /* */
-  opacity: 1; /* Make it fully opaque on hover if it started with some opacity */
+  opacity: 1; /* */
 }
 
-
-/* Responsive adjustments for brand logos */
+/* Responsive adjustments for CSS Grid */
 @media (max-width: 768px) {
-  .brand-item {
-    flex-basis: 28%; /* Aims for ~3 items per row on tablets */
-    min-width: 100px;
+  .brands-container {
+    /* Adjust minmax for tablets, e.g., fewer, slightly larger items if desired */
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* */
+    gap: 1.5rem; /* */
   }
   .brand-logo {
-    max-height: 60px; /* Slightly smaller on tablets */
+    max-height: 55px; /* */
   }
 }
 
 @media (max-width: 480px) {
-  .brand-item {
-    flex-basis: 40%; /* Aims for ~2 items per row on mobile */
-    min-width: 80px;
+  .brands-container {
+    /* On small mobile, maybe 2 or 3 columns */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* */
+    gap: 1rem; /* */
   }
   .brand-logo {
-    max-height: 50px; /* Smaller on mobile */
-  }
-  .brands-container {
-    gap: 1.5rem; /* Reduce gap on mobile */
+    max-height: 45px; /* */
   }
 }
 /* --- Testimonials Section Styles --- */

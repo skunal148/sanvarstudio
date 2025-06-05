@@ -5,32 +5,32 @@ const ServicesPage = () => {
     {
       imgSrc: "/thumbnails/playable-ad-thumbnail.png",
       imgAlt: "Playable Ad Development Thumbnail",
-      title: "Playable Ad Development",
-      description: "We specialize in creating captivating and high-performance playable ads that drive user engagement and conversions. Our ads are designed to be lightweight, interactive, and optimized for all major platforms."
+      title: "Playable Ads",
+      description: "We specialize in creating captivating and high-performance playable ads that drive user engagement and conversions."
     },
     {
-      imgSrc: "/thumbnails/html5-game-thumbnail.png",
+      imgSrc: "/thumbnails/html5-game-thumbnail.jpg",
       imgAlt: "HTML5 Game Development Thumbnail",
-      title: "HTML5 Game Development",
-      description: "From concept to launch, we build engaging HTML5 games that run seamlessly across desktop and mobile browsers. Whether you need a branded mini-game, an educational tool, or an original IP, we bring your vision to life."
+      title: "HTML5 Games",
+      description: "From concept to launch, we build engaging HTML5 games that run seamlessly across desktop and mobile browsers."
     },
     {
-      imgSrc: "/thumbnails/3d-game-dev.png",
+      imgSrc: "/thumbnails/3d-game-dev.jpg",
       imgAlt: "3D Game Development Thumbnail",
-      title: "3D Game Development",
-      description: "We create immersive and high-performance 3D games for various platforms, combining cutting-edge graphics with engaging gameplay to bring virtual worlds to life."
+      title: "3D Games",
+      description: "We create immersive and high-performance 3D games for various platforms."
     },
     {
-      imgSrc: "/thumbnails/web-ar-exp.png",
+      imgSrc: "/thumbnails/web-ar-exp.jpg",
       imgAlt: "Web AR Experiences Thumbnail",
       title: "Web AR Experiences",
-      description: "Step into the future with captivating Web AR experiences. We develop augmented reality solutions accessible directly through web browsers, offering innovative interactions without needing a separate app."
+      description: "We develop augmented reality solutions accessible directly through web browsers"
     },
     {
       imgSrc: "/thumbnails/gameDevelopment.png",
       imgAlt: "Web Development Thumbnail",
       title: "Web Development",
-      description: "Our web development services focus on creating responsive, high-performing, and user-friendly websites tailored to your brand, incorporating modern design and interactive elements to drive engagement."
+      description: "Our web development services focus on creating responsive, high-performing, and user-friendly websites tailored to your brand."
     }
   ];
 

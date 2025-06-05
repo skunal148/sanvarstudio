@@ -5,7 +5,6 @@ const brandsData = [
     { name: 'Brand Beta', logoUrl: '/brands/AlpineFresh.png' },
     { name: 'Client Gamma', logoUrl: '/brands/Happn.png' },
     { name: 'Partner Delta', logoUrl: '/brands/mthree.png' },
-    { name: 'Company Epsilon', logoUrl: '/brands/Linen Chest.png' },
     { name: 'Company Epsilon', logoUrl: '/brands/portalone.jpeg' },
     { name: 'Company Epsilon', logoUrl: '/brands/Rival Club.png' },
     { name: 'Company Epsilon', logoUrl: '/brands/truecaller.png' },
