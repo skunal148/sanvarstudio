@@ -252,7 +252,7 @@ a {
    /* Ensure h1 and p inside hero-content are also centered */
   .hero-text-container .hero-content h1,
   .hero-text-container .hero-content p {
-    text-align: center;
+    text-align: left;
     margin-left: auto; /* Helps in centering block elements if they have a width */
     margin-right: auto;
   }
@@ -267,7 +267,7 @@ a {
   display: flex;
   justify-content: center; /* Center video within its container */
   align-items: center;
-  max-width: 70%; /* Prevent video from becoming too large */
+  /*max-width: 70%; /* Prevent video from becoming too large */
 }
 
 .hero-video {
@@ -288,7 +288,7 @@ a {
 /* Styles for .hero-content (the actual text block) */
 /* This was: width: 90%; align-items: flex-start; text-align:left; */
 .hero-text-container .hero-content {
-  width: 100%; /* Now takes full width of its new parent, .hero-text-container */
+ /* width: 100%; /* Now takes full width of its new parent, .hero-text-container */
   text-align: left; /* Keep text left-aligned */ /* */
   /* align-items: flex-start; /* if .hero-content itself is a flex container for its children */
 }
