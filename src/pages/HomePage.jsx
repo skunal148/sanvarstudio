@@ -15,7 +15,7 @@ const ScrollDownIcon = ({ color = "#292528" }) => (
 
 const HomePage = () => {
     return (
-        <section id="home" className="hero-section">
+        <section id="home" className="hero-section page-padding">
             <div className="hero-text-container">
                 <div className="hero-content">
                     <h1>

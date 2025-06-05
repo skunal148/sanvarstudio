@@ -5,6 +5,17 @@
   --font-primary: 'Poppins', sans-serif; 
 }
 
+html { /* Added for smooth scroll on direct hash links */
+  box-sizing: border-box;
+  overflow-x: hidden; /* Prevent horizontal scroll on html */
+  scroll-behavior: smooth;
+}
+
+
+*, *::before, *::after {
+  box-sizing: inherit; /* All elements inherit border-box from html */
+}
+
 body {
   margin: 0;
   font-family: var(--font-primary);
@@ -16,9 +27,6 @@ body {
   overflow-x: hidden; 
 }
 
-html { /* Added for smooth scroll on direct hash links */
-  scroll-behavior: smooth;
-}
 
 /* Basic reset for buttons */
 button { 
@@ -60,7 +68,7 @@ a {
   left: 0;
   right: 0;
   z-index: 50;
-  padding: 0.75rem 1rem; 
+  padding: 0.75rem 1.25rem; 
   display: flex;
   justify-content: space-between; 
   align-items: center;
@@ -109,16 +117,7 @@ a {
   display: block; 
 }
 
-@media (min-width: 375px) {
-  .main-nav {
-    padding: 1rem 2rem;
-  }
-  .logo-placeholder {
-    font-size: 1.2rem; 
-  }
-}
-
-@media (min-width: 768px) { 
+@media (min-width: 901px) { 
   .main-nav {
     padding: 1.5rem 2rem; 
     min-height: 60px;
@@ -212,16 +211,11 @@ a {
   display: flex;            /* MODIFIED: Use flexbox for side-by-side layout */
   flex-direction: row;      /* MODIFIED: Arrange items in a row */
   align-items: center;      /* MODIFIED: Vertically align video and text containers */
-  justify-content: space-evenly; /* MODIFIED: Distribute space, or use space-between/space-around */
+  justify-content: center; /* MODIFIED: Distribute space, or use space-between/space-around */
   padding: 2rem;            /* MODIFIED: Overall padding for the section */
-  /* Adjust padding-top to ensure content is below fixed nav */
-  /* Nav min-height is 50px (or 60px on larger screens) */ /* */
-  padding-top: calc(50px + 3rem); /* e.g., nav height + desired space */
+  width: 100%;
   position: relative;
   color: var(--smoke-signal); /* */
-  box-sizing: border-box; /* */
-  gap: 2rem;                /* Space between video and text areas */
-  overflow: hidden; /* Prevent content from spilling if sizing is tricky during resize */
 }
 
 /* Responsive: Stack video and text on smaller screens */
@@ -231,34 +225,25 @@ a {
     justify-content: center;  /* Center them vertically when stacked */
     align-items: center;
     padding-top: calc(50px + 2rem); /* Adjust padding for stacked layout */
-    text-align: center;       /* Center align text for a better stacked look */
-    padding-right: 2rem;
-    
+    text-align: center;       /* Center align text for a better stacked look  */
   }
   .hero-video-container,
   .hero-text-container {
-    flex-basis: auto; /* Reset flex-basis for stacking */
     width: 100%;      /* Allow them to take more width when stacked */
     max-width: 600px; /* Optional: constrain width in stacked view */
-    margin-bottom: 2rem; /* Add space between video and text when stacked */
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 1.5rem; /* Add space between video and text when stacked */
   }
   .hero-text-container .hero-content {
-    width: 100%;
     text-align: center; /* Center text within hero-content when stacked */
-    align-items: center; /* If hero-content is flex, this centers its items */
   }
    /* Ensure h1 and p inside hero-content are also centered */
   .hero-text-container .hero-content h1,
   .hero-text-container .hero-content p {
     text-align: left;
-    margin-left: auto; /* Helps in centering block elements if they have a width */
-    margin-right: auto;
   }
-  .hero-section { /* Re-adjust top padding for larger screens after stacking modification */
-      padding-top: calc(60px + 3rem); /* For 768px+ nav height */
-  }
+  /* .hero-section { /* Re-adjust top padding for larger screens after stacking modification
+      padding-top: calc(60px + 3rem); /* For 768px+ nav height 
+  } */
 }
 
 
@@ -310,6 +295,21 @@ a {
   margin-top: 0.5rem; /* Space above the paragraph */
 }
 
+
+@media (min-width: 901px) { /* Breakpoint where hero goes side-by-side */
+  .hero-section {
+    flex-direction: row; /* */
+    justify-content: space-evenly; /* Or your preferred justification */ /* */
+    align-items: center; /* */
+    gap: 2rem; /* */
+    /* Desktop specific padding for hero if different from mobile */
+    padding-left: 2rem; /* */
+    padding-right: 2rem; /* */
+    padding-top: calc(60px + 3rem); /* Example for desktop */ /* */
+  }
+}
+
+
 /* Keep your existing responsive font size media queries for .hero-section h1 and p */
 /* They should adapt to the new container widths. Example: */
 @media (min-width: 480px) {
@@ -339,9 +339,8 @@ a {
 */
 /* --- General Content Section Styling --- */
 .page-padding { 
-  padding-top: 65px; 
-  padding-bottom: 1rem; 
-  box-sizing: border-box;
+  padding-top: 80px;    /* Your current value */ /* */
+  padding-bottom: 2rem; /* Your current value from last adjustment */
 }
 
 @media (min-width: 768px) {
@@ -356,10 +355,8 @@ a {
   flex-direction: column; 
   align-items: flex-start; 
   text-align: left; 
-  font-size: 1rem; 
-  box-sizing: border-box;
-  width: 98%;
-  margin: auto;
+  font-size: 1rem;
+  width: 100%;
 }
 
 .content-section h2 {
@@ -368,6 +365,24 @@ a {
   margin-right: auto;
   color: var(--smoke-signal);
   font-weight: 600; 
+}
+
+@media (max-width: 900px) {
+  .content-section{
+    width: 90%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin:auto;
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 901px) {
+  .content-section{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .content-section p {
