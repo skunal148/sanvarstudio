@@ -333,6 +333,12 @@ a {
   .hero-section h1 { font-size: 4.5rem; } /* */
 }
 
+@media (max-width: 768px){
+  .page-padding {
+    align-items: center;
+  }
+}
+
 /* Remove or adjust .scroll-down-icon styles if you're not using it or need to reposition it.
 .scroll-down-icon { ... }
 */
