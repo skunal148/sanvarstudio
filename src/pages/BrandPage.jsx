@@ -2,14 +2,14 @@ import React from 'react';
 
 const brandsData = [
     { name: 'Alps Blockchain', logoUrl: '/brands/Alps.png' },
-    { name: 'Brand Beta', logoUrl: '/brands/AlpineFresh.png' },
-    { name: 'Client Gamma', logoUrl: '/brands/Happn.png' },
-    { name: 'Partner Delta', logoUrl: '/brands/mthree.png' },
-    { name: 'Company Epsilon', logoUrl: '/brands/portalone.jpeg' },
-    { name: 'Company Epsilon', logoUrl: '/brands/Rival Club.png' },
-    { name: 'Company Epsilon', logoUrl: '/brands/truecaller.png' },
-    { name: 'Company Epsilon', logoUrl: '/brands/Linen Chest.png' },
-    { name: 'Company Epsilon', logoUrl: '/brands/upily.jpeg' },
+    { name: 'Alpine Fresh', logoUrl: '/brands/AlpineFresh.png' },
+    { name: 'Happn', logoUrl: '/brands/Happn.png' },
+    { name: 'Mthree', logoUrl: '/brands/mthree.png' },
+    { name: 'Portal One', logoUrl: '/brands/portalone.jpeg' },
+    { name: 'Rival Club', logoUrl: '/brands/Rival Club.png' },
+    { name: 'TrueCaller', logoUrl: '/brands/truecaller.png' },
+    { name: 'Linen Chest', logoUrl: '/brands/Linen Chest.png' },
+    { name: 'Upily', logoUrl: '/brands/upily.jpeg' },
     // Add more brands
 ];
 

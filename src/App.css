@@ -111,7 +111,7 @@ a {
 
 @media (min-width: 375px) {
   .main-nav {
-    padding: 0.75rem 1.25rem;
+    padding: 1rem 2rem;
   }
   .logo-placeholder {
     font-size: 1.2rem; 
@@ -229,8 +229,11 @@ a {
   .hero-section {
     flex-direction: column;   /* Stack them vertically */
     justify-content: center;  /* Center them vertically when stacked */
+    align-items: center;
     padding-top: calc(50px + 2rem); /* Adjust padding for stacked layout */
     text-align: center;       /* Center align text for a better stacked look */
+    padding-right: 2rem;
+    
   }
   .hero-video-container,
   .hero-text-container {
@@ -238,6 +241,8 @@ a {
     width: 100%;      /* Allow them to take more width when stacked */
     max-width: 600px; /* Optional: constrain width in stacked view */
     margin-bottom: 2rem; /* Add space between video and text when stacked */
+    margin-left: auto;
+    margin-right: auto;
   }
   .hero-text-container .hero-content {
     width: 100%;
@@ -335,8 +340,8 @@ a {
 .page-padding { 
   padding-top: 65px; 
   padding-bottom: 1rem; 
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  margin-left: auto;
+  margin-right: auto;
   box-sizing: border-box;
 }
 
