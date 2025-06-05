@@ -730,3 +730,158 @@ a {
   }
 }
 
+
+/* In App.css */
+
+/* In App.css */
+
+/* --- Brands Section Styles --- */
+.brands-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* MODIFIED: Use space-around for more even distribution like apexexp.in */
+  justify-content: space-around;
+  align-items: center;
+  /* MODIFIED: Adjust gap if needed, or rely on flex-basis and margins of items */
+  gap: 2rem; /* You can adjust this or remove if using margins on items */
+  margin-top: 2.5rem; /* */
+  padding: 2rem 0; /* MODIFIED: Increased vertical padding for the container */
+}
+
+.brand-item {
+  /* MODIFIED: Add flex properties to control how many items per row */
+  flex: 0 1 18%; /* Example: Aims for roughly 5 items per row (100 / 18 ~ 5.5). Adjust as needed.
+                     Allows shrinking, but doesn't grow beyond its content.
+                     (100 / desired_items_per_row) -> e.g., 100/4 = 25%, 100/5 = 20%
+                     Subtract a bit for gaps or use box-sizing. */
+  min-width: 120px; /* Minimum width for a logo before it wraps */
+  padding: 0.5rem; /* Add some padding around each logo's clickable area */
+  box-sizing: border-box;
+  text-align: center; /* Center the logo within the item if link is block */
+}
+
+.brand-item a {
+  display: inline-block; /* Allows text-align center on parent to work for the block */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* */
+}
+
+.brand-item a:hover {
+  transform: scale(1.05); /* */
+  opacity: 0.8; /* */
+}
+
+.brand-logo {
+  max-height: 90px; /* MODIFIED: Increased from 50px. Adjust to your preference. */
+  max-width: 160px; /* MODIFIED: Slightly increased. Adjust based on your logos. */
+  width: auto;      /* */
+  transition: filter 0.3s ease, opacity 0.3s ease; /* Combined transitions */ /* */
+  vertical-align: middle; /* Good for images within links */
+}
+
+.brand-item a:hover .brand-logo { /* Apply hover effects to the logo when link is hovered */
+  filter: grayscale(0%); /* */
+  opacity: 1; /* Make it fully opaque on hover if it started with some opacity */
+}
+
+
+/* Responsive adjustments for brand logos */
+@media (max-width: 768px) {
+  .brand-item {
+    flex-basis: 28%; /* Aims for ~3 items per row on tablets */
+    min-width: 100px;
+  }
+  .brand-logo {
+    max-height: 60px; /* Slightly smaller on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-item {
+    flex-basis: 40%; /* Aims for ~2 items per row on mobile */
+    min-width: 80px;
+  }
+  .brand-logo {
+    max-height: 50px; /* Smaller on mobile */
+  }
+  .brands-container {
+    gap: 1.5rem; /* Reduce gap on mobile */
+  }
+}
+/* --- Testimonials Section Styles --- */
+.testimonials-container {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr; /* Default to single column for mobile */
+  gap: 2rem; /* Space between testimonial cards */
+}
+
+.testimonial-card {
+  background-color: #FFFFFF; /* Or var(--pale-ivory) with a border */ /* */
+  padding: 2rem 2.5rem;
+  border-radius: 8px; /* */
+  box-shadow: 0 5px 20px rgba(41, 37, 40, 0.07); /* Using smoke-signal with low alpha */ /* */
+  /* border-left: 4px solid var(--smoke-signal); Optional accent */
+}
+
+.testimonial-quote {
+  font-size: 1.05rem; /* Adjust as needed */
+  line-height: 1.7;
+  font-style: italic;
+  color: var(--smoke-signal); /* */
+  margin: 0 0 1.5rem 0;
+  position: relative;
+}
+
+.testimonial-quote::before { /* Optional: large decorative quote mark */
+  content: '“';
+  font-family: Georgia, serif; /* A font with nice quote marks */
+  font-size: 4rem;
+  color: var(--smoke-signal); /* */
+  opacity: 0.15;
+  position: absolute;
+  left: -0.4em;
+  top: -0.4em;
+  line-height: 1;
+}
+
+.testimonial-cite {
+  display: block;
+  text-align: right; /* Or left, depending on preference */
+  font-style: normal;
+  margin-top: 1rem;
+}
+
+.testimonial-name {
+  display: block;
+  font-weight: 600; /* */
+  color: var(--smoke-signal); /* */
+  font-size: 1rem;
+}
+
+.testimonial-title-company {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--smoke-signal); /* */
+  opacity: 0.75;
+  margin-top: 0.25rem;
+}
+
+/* Responsive: For wider screens, display testimonials in columns */
+@media (min-width: 768px) {
+  .testimonials-container {
+    /* You can use auto-fit for more flexibility or specify column count */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Or for exactly 2 columns if you have many testimonials: */
+    /* grid-template-columns: 1fr 1fr; */
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonials-container {
+    /* If you want up to 3 columns on very wide screens: */
+    /* grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); */
+    /* Sticking to 2 columns might be better for readability if quotes are long */
+     grid-template-columns: repeat(2, 1fr); /* Or 1fr if you prefer them stacked but wider */
+  }
+}
+

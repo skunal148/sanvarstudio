@@ -9,6 +9,8 @@ import AboutPage from './pages/AboutPage'; // Assuming path is src/pages/AboutPa
 import ServicesPage from './pages/ServicesPage';
 import PortfolioPage from './pages/PortfolioPage';
 import ContactPage from './pages/ContactPage';
+import BrandPage from './pages/BrandPage';
+import TestimonialsPage from './pages/TestimonialsPage';
 
 
 // --- Icon Components (Ideally move to src/components/Icons/) ---
@@ -167,6 +169,8 @@ export default function App() {
         {/* Add other sections here if they are part of the single page */}
         <ServicesPage />
         <PortfolioPage />
+        <BrandPage/>
+        <TestimonialsPage/>
         <ContactPage />
       </main>
     </div>
