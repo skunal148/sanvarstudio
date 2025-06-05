@@ -340,8 +340,8 @@ a {
 .page-padding { 
   padding-top: 65px; 
   padding-bottom: 1rem; 
-  margin-left: auto;
-  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   box-sizing: border-box;
 }
 
