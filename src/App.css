@@ -339,13 +339,11 @@ a {
 */
 /* --- General Content Section Styling --- */
 .page-padding { 
-  padding-top: 80px;    /* Your current value */ /* */
   padding-bottom: 2rem; /* Your current value from last adjustment */
 }
 
 @media (min-width: 768px) {
   .page-padding {
-    padding-top: 80px; 
     padding-bottom: 1.5rem;
   }
 }
