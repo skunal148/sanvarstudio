@@ -224,14 +224,15 @@ a {
     flex-direction: column;   /* Stack them vertically */
     justify-content: center;  /* Center them vertically when stacked */
     align-items: center;
-    padding-top: calc(50px + 2rem); /* Adjust padding for stacked layout */
     text-align: center;       /* Center align text for a better stacked look  */
+    padding-top: calc(50px + 0.2rem);
   }
   .hero-video-container,
   .hero-text-container {
     width: 100%;      /* Allow them to take more width when stacked */
     max-width: 600px; /* Optional: constrain width in stacked view */
-    margin-bottom: 1.5rem; /* Add space between video and text when stacked */
+    margin-bottom: 1rem; /* Add space between video and text when stacked */
+    
   }
   .hero-text-container .hero-content {
     text-align: center; /* Center text within hero-content when stacked */
