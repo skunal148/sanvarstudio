@@ -19,7 +19,10 @@ const HomePage = () => {
             <div className="hero-text-container">
                 <div className="hero-content">
                     <h1>
-                        Sanvar Studio:<br />
+                        Sanvar Studio:
+                        
+                    </h1>
+                    <h1>
                         Crafting Interactive Experiences.
                     </h1>
                     <p>
@@ -29,8 +32,6 @@ const HomePage = () => {
             </div>
             <div className="hero-video-container">
                 <video
-                    // IMPORTANT: Replace with the path to your video file
-                    // For example, if your video is in `public/videos/hero-bg.mp4`, use "/videos/hero-bg.mp4"
                     src="/videos/placeholder-hero-video.mp4"
                     autoPlay
                     loop

@@ -20,7 +20,7 @@ const HamburgerIcon = ({ onClick, color = "#292528" }) => (
     className="icon-button hamburger-icon"
     aria-label="Open menu"
   >
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" >
+    <svg width="28" height="28" viewBox="0 0 24 20" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" >
       <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
     </svg>
   </button>
@@ -33,6 +33,18 @@ const CloseIcon = ({ onClick, color = "#F8F5E2" }) => (
     </svg>
   </button>
 );
+
+const ThemeToggle = ({ theme, toggleTheme }) => {
+  return (
+    <button
+      onClick={toggleTheme}
+      className="theme-toggle-button"
+      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+    >
+      {theme === 'light' ? '🌙' : '☀️'} {/* Simple emoji toggle, style as needed */}
+    </button>
+  );
+};
 
 // ScrollDownIcon is part of HomePage.jsx
 
@@ -68,7 +80,7 @@ const DesktopNavLinks = ({ handleSmoothScroll }) => { // Added handleSmoothScrol
   );
 };
 
-const OverlayMenu = ({ isOpen, toggleOverlay, handleSmoothScroll }) => { // Added handleSmoothScroll
+const OverlayMenu = ({ isOpen, toggleOverlay, handleSmoothScroll, closeIconColor  }) => { // Added handleSmoothScroll
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -83,7 +95,7 @@ const OverlayMenu = ({ isOpen, toggleOverlay, handleSmoothScroll }) => { // Adde
   return (
     <div className={`overlay-menu ${isOpen ? 'open' : ''}`}>
       <div className="overlay-menu-close-button-container">
-        <CloseIcon onClick={toggleOverlay} />
+        <CloseIcon onClick={toggleOverlay} iconColor={closeIconColor}/>
       </div>
       <nav className="overlay-menu-nav">
         {NAV_ITEMS.map((item) => (
@@ -108,15 +120,19 @@ const OverlayMenu = ({ isOpen, toggleOverlay, handleSmoothScroll }) => { // Adde
 };
 
 // Consider this Nav component as './components/Nav/Nav.jsx'
-const Nav = ({ isOverlayOpen, toggleOverlay, handleSmoothScroll }) => { // Added handleSmoothScroll
+const Nav = ({ isOverlayOpen, toggleOverlay, handleSmoothScroll, currentTheme, onToggleTheme }) => { // Added handleSmoothScroll
+
+  const primaryTextColor = currentTheme === 'dark' ? 'var(--text-primary)' : 'var(--text-primary)'; // Or specific colors
+  const overlayCloseIconColor = currentTheme === 'dark' ? 'var(--bg-primary)' : 'var(--text-primary)'; // Color for close icon in overlay
   return (
     <header className="main-nav">
       <LogoPlaceholder handleSmoothScroll={handleSmoothScroll} />
       <div className="nav-right-elements">
         <DesktopNavLinks handleSmoothScroll={handleSmoothScroll} />
+        <ThemeToggle theme={currentTheme} toggleTheme={onToggleTheme} />
         <HamburgerIcon onClick={toggleOverlay} />
       </div>
-      <OverlayMenu isOpen={isOverlayOpen} toggleOverlay={toggleOverlay} handleSmoothScroll={handleSmoothScroll} />
+      <OverlayMenu isOpen={isOverlayOpen} toggleOverlay={toggleOverlay} handleSmoothScroll={handleSmoothScroll} closeIconColor={overlayCloseIconColor} />
     </header>
   );
 };
@@ -126,7 +142,27 @@ const Nav = ({ isOverlayOpen, toggleOverlay, handleSmoothScroll }) => { // Added
 // --- Main App Component ---
 export default function App() {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+      const localTheme = localStorage.getItem('theme');
+      if (localTheme) {
+        return localTheme;
+      }
+      // Default to light or check system preference
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
 
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
   const toggleOverlay = () => {
     setIsOverlayOpen(!isOverlayOpen);
   };
@@ -161,6 +197,8 @@ export default function App() {
         isOverlayOpen={isOverlayOpen} 
         toggleOverlay={toggleOverlay} 
         handleSmoothScroll={handleSmoothScroll} 
+        currentTheme={theme}      // Pass current theme
+        onToggleTheme={toggleTheme} // Pass toggle handler
       />
       <main className="page-content-wrapper">
         {/* Render sections directly for single-page layout */}

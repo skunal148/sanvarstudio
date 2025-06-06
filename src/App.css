@@ -1,8 +1,28 @@
 /* --- Global Styles & Variables --- */
 :root {
-  --pale-ivory: #F8F5E2;
-  --smoke-signal: #292528;
+  --bg-primary: #F8F5E2;              /* Was --pale-ivory */ /* */
+  --text-primary: #292528;            /* Was --smoke-signal */ /* */
+  --bg-card: #f0e3cd;                 /* e.g., for service items, portfolio cards */
+  --border-color: #E0E0E0;           /* e.g., for card borders, form inputs */
+  --accent-primary: var(--text-primary); /* For primary buttons/links */
+  --accent-primary-text: var(--bg-primary); /* Text on primary buttons */
+  --link-hover-opacity: 0.7;
   --font-primary: 'Poppins', sans-serif; 
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+body.dark-mode { /* This class will be toggled on the body */
+  /* Dark Mode Overrides */
+  --bg-primary: #2A2A2A;      /* Deep Charcoal */
+  --text-primary: #F5EADF;     /* Light Almond */
+  --bg-card: #383838;         /* Slightly lighter dark for cards */
+  --border-color: #4D4D4D;    /* Darker border */
+  --accent-primary: var(--text-primary); /* Light Almond for buttons */
+  --accent-primary-text: var(--bg-primary); /* Deep Charcoal for text on buttons */
+  --link-hover-opacity: 0.8;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2); /* Darker shadows for dark mode */
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.25);
 }
 
 html { /* Added for smooth scroll on direct hash links */
@@ -21,10 +41,11 @@ body {
   font-family: var(--font-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--pale-ivory);
-  color: var(--smoke-signal);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden; 
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 
@@ -49,16 +70,17 @@ a {
   display: flex; 
   align-items: center;
   justify-content: center;
+  background-color: var(--bg-primary);
 }
 .icon-button:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
 .hamburger-icon:focus { 
-  box-shadow: 0 0 0 2px var(--pale-ivory), 0 0 0 4px var(--smoke-signal);
+  box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--text-primary);
 }
 .close-icon:focus { 
-   box-shadow: 0 0 0 2px var(--smoke-signal), 0 0 0 4px var(--pale-ivory);
+   box-shadow: 0 0 0 2px var(--text-primary), 0 0 0 4px var(--bg-primary);
 }
 
 /* --- Navigation Styles (main-nav) --- */
@@ -72,16 +94,17 @@ a {
   display: flex;
   justify-content: space-between; 
   align-items: center;
-  background-color: var(--pale-ivory); 
+  background-color: var(--bg-primary); 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
   min-height: 50px; 
+  transition: background-color 0.3s ease;
 }
 
 .logo-placeholder {
   font-size: 1.1rem; 
   font-weight: 600;
   letter-spacing: -0.025em;
-  color: var(--smoke-signal);
+  color: var(--text-primary);
   transition: opacity 0.3s ease, font-size 0.3s ease;
   white-space: nowrap; 
 }
@@ -103,11 +126,12 @@ a {
 .desktop-nav-link {
   font-size: 0.85rem; 
   font-weight: 400;
-  color: var(--smoke-signal);
+  color: var(--text-primary);
   padding: 0.5rem 0.4rem; 
   transition: opacity 0.3s ease, color 0.3s ease;
   position: relative; 
-  white-space: nowrap; 
+  white-space: nowrap;
+  transition: opacity 0.3s ease, color 0.3s ease; /* */
 }
 .desktop-nav-link:hover {
   opacity: 0.7;
@@ -115,6 +139,7 @@ a {
 
 .hamburger-icon { 
   display: block; 
+  background-color: var(--text-primary);
 }
 
 @media (min-width: 901px) { 
@@ -146,14 +171,15 @@ a {
   width: 100%;
   height: 100%;
   z-index: 40; 
-  background-color: var(--smoke-signal);
-  color: var(--pale-ivory);
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transform: translateX(-100%);
   transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); 
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .overlay-menu.open {
@@ -207,7 +233,7 @@ a {
 /* --- Hero Section Styles --- */
 .hero-section {
   min-height: 100vh;
-  background-color: var(--pale-ivory); /* */
+  background-color: var(--bg-primary); /* */
   display: flex;            /* MODIFIED: Use flexbox for side-by-side layout */
   flex-direction: row;      /* MODIFIED: Arrange items in a row */
   align-items: center;      /* MODIFIED: Vertically align video and text containers */
@@ -215,7 +241,7 @@ a {
   padding: 2rem;            /* MODIFIED: Overall padding for the section */
   width: 100%;
   position: relative;
-  color: var(--smoke-signal); /* */
+  color: var(--text-primary); /* */
 }
 
 /* Responsive: Stack video and text on smaller screens */
@@ -288,6 +314,8 @@ a {
   margin-bottom: 0.5rem; /* Space between the two H1s or H1 and P */
 }
 
+
+
 .hero-section p {
   font-size: 1rem; /* Base size */ /* */
   opacity: 0.8; /* */
@@ -299,9 +327,10 @@ a {
 
 @media (min-width: 901px) { /* Breakpoint where hero goes side-by-side */
   .hero-section {
+    display: flex;
     flex-direction: row; /* */
     justify-content: space-evenly; /* Or your preferred justification */ /* */
-    align-items: center; /* */
+    align-items: flex-start; /* */
     gap: 2rem; /* */
     /* Desktop specific padding for hero if different from mobile */
     padding-left: 2rem; /* */
@@ -324,14 +353,14 @@ a {
 /* etc. for other breakpoints */
 @media (min-width: 768px) {
     .hero-section { /* Re-adjust top padding for larger screens */
-        padding-top: calc(60px + 4rem); /* For 768px+ nav height, increased top space */
+        padding-top: calc(60px + 6rem); /* For 768px+ nav height, increased top space */
     }
      .hero-section h1 { font-size: 3.75rem; margin-bottom: 1rem; } /* */
      .hero-section p { font-size: 1.5rem; } /* */
 }
 
 @media (min-width: 1024px) {
-  .hero-section h1 { font-size: 4.5rem; } /* */
+  .hero-section h1 { font-size: 4rem; } /* */
 }
 
 
@@ -362,7 +391,7 @@ a {
   font-size: 2rem; 
   margin-bottom: 1.5rem;
   margin-right: auto;
-  color: var(--smoke-signal);
+  color: var(--text-primary);
   font-weight: 600; 
 }
 
@@ -405,16 +434,16 @@ a {
 
 /* Placeholder for other specific section styles */
 .bg-smoke-signal {
-  background-color: var(--smoke-signal);
+  background-color: var(--text-primary);
 }
 .text-pale-ivory {
-  color: var(--pale-ivory);
+  color: var(--bg-primary);
 }
 .bg-pale-ivory {
-  background-color: var(--pale-ivory);
+  background-color: var(--bg-primary);
 }
 .text-smoke-signal {
-  color: var(--smoke-signal);
+  color: var(--text-primary);
 }
 
 
@@ -427,16 +456,17 @@ a {
 }
 
 .service-item {
-  border: 1px solid var(--pale-ivory); /* Border around each service item */
-  padding: 1.5rem; /* Padding inside the border, around the content */
+  /*border: 1px solid var(--bg-primary); /* Border around each service item */
   border-radius: 8px; /* Optional: rounded corners for the box */
-  background-color: #f0e3cd; /* Optional: a background color for the box, can be var(--pale-ivory) or transparent */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Optional: subtle shadow for depth */
+  background-color: var(--bg-card); /* Optional: a background color for the box, can be var(--pale-ivory) or transparent */
+  box-shadow: var(--shadow-md); /* Optional: subtle shadow for depth */
   /* Flex properties for each item */
   display: flex; /* Allows items to grow and shrink. Aims for roughly 2 items per row. Adjust '40%' as needed. */
   flex-direction: row;    /* Arrange image and text side-by-side */
   align-items: flex-start; /* Align items to the top. Use 'center' if you prefer vertical centering. */
   gap: 1.5rem;            /* Space between thumbnail and text content */
+  padding: 0.75rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-item-thumbnail {
@@ -454,7 +484,7 @@ a {
 .service-item h3 {
   font-size: 1.5rem; /* Adjust as needed */
   font-weight: 600;
-  color: var(--smoke-signal);
+  color: var(--text-primary);
   margin-top: 0; /* Remove default top margin if any */
   margin-bottom: 0.75rem;
 }
@@ -497,13 +527,14 @@ a {
 }
 
 .portfolio-item {
-  background-color: #f0e3cd;
+  background-color: var(--bg-card);
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(41, 37, 40, 0.1);
+  box-shadow: var(--shadow-md);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   text-align: left;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* New class for the link wrapping the thumbnail */
@@ -537,7 +568,7 @@ a {
 .portfolio-item-content h3 {
   font-size: 1.375rem;
   font-weight: 600;
-  color: var(--smoke-signal);
+  color: var(--text-primary);
   margin-top: 0;
   margin-bottom: 0.75rem;
 }
@@ -545,7 +576,7 @@ a {
 .portfolio-item-content p {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--smoke-signal);
+  color: var(--text-primary);
   opacity: 0.9;
   margin-bottom: 1rem;
 }
@@ -585,16 +616,16 @@ a {
 
 .button-primary {
   padding: 0.6rem 1.2rem;
-  background-color: var(--smoke-signal);
-  color: var(--pale-ivory);
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
   border-radius: 4px;
-  border: 1px solid var(--smoke-signal);
+  border: 1px solid var(--text-primary);
 }
 
 .button-primary:hover {
-  background-color: var(--pale-ivory);
-  color: var(--smoke-signal);
-  border: 1px solid var(--smoke-signal);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
 }
 /* --- Contact Form Styles --- */
 .contact-form {
@@ -612,7 +643,7 @@ a {
   margin-bottom: 0.5rem;
   font-weight: 500;
   font-size: 0.9rem;
-  color: var(--smoke-signal); /* */
+  color: var(--text-primary); /* */
 }
 
 .form-group input[type="text"],
@@ -624,7 +655,7 @@ a {
   border-radius: 0.375rem; /* Tailwind's 'rounded-md' */
   font-size: 1rem;
   font-family: var(--font-primary); /* */
-  color: var(--smoke-signal); /* */
+  color: var(--text-primary); /* */
   background-color: #FFFFFF; /* White background for fields */
   box-sizing: border-box;
   transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -634,7 +665,7 @@ a {
 .form-group input[type="email"]:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--smoke-signal); /* Darker border on focus */ /* */
+  border-color: var(--text-primary); /* Darker border on focus */ /* */
   box-shadow: 0 0 0 2px rgba(41, 37, 40, 0.2); /* Subtle focus ring, using smoke-signal with alpha */
 }
 
@@ -688,12 +719,12 @@ a {
 .form-group textarea {
   width: 100%; /* */
   padding: 0.75rem 1rem; /* */
-  border: 1px solid #D1D5DB; /* */
+  border: none; /* */
   border-radius: 0.375rem; /* */
   font-size: 1rem; /* */
   font-family: var(--font-primary); /* */
-  color: var(--smoke-signal); /* */
-  background-color: #FFFFFF; /* */
+  color: var(--text-primary); /* */
+  background-color: var(--bg-card); /* */
   box-sizing: border-box; /* */
   transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* */
 }
@@ -702,7 +733,7 @@ a {
 .form-group input[type="email"]:focus,
 .form-group textarea:focus {
   outline: none; /* */
-  border-color: var(--smoke-signal); /* */
+  border-color: var(--text-primary); /* */
   box-shadow: 0 0 0 2px rgba(41, 37, 40, 0.2); /* */
 }
 
@@ -754,18 +785,13 @@ a {
 
 /* --- Brands Section Styles --- */
 .brands-container {
-  display: grid;
-  /* This creates as many columns as will fit, each at least 140px
-     and at most 1fr (a fraction of the available space).
-     This makes the grid responsive and items should align in columns. */
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 2rem 1.5rem; /* MODIFIED: Row gap of 2rem, Column gap of 1.5rem. Adjust as needed. */
-  margin-top: 2.5rem; /* */
-  padding: 2rem 0; /* MODIFIED: Removed specific horizontal padding from container,
-                       rely on .content-section's padding for overall page alignment.
-                       If .content-section already provides side padding, this can be 2rem 0. */
-  width: 100%; /* Ensure it uses the full width of its parent (.content-section) */
-  box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+    padding: 2rem 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .brand-item {
@@ -833,18 +859,19 @@ a {
 }
 
 .testimonial-card {
-  background-color: #FFFFFF; /* Or var(--pale-ivory) with a border */ /* */
+  background-color: var(--bg-card); /* Or var(--pale-ivory) with a border */ /* */
   padding: 2rem 2.5rem;
   border-radius: 8px; /* */
-  box-shadow: 0 5px 20px rgba(41, 37, 40, 0.07); /* Using smoke-signal with low alpha */ /* */
-  /* border-left: 4px solid var(--smoke-signal); Optional accent */
+  box-shadow: var(--shadow-md); /* Using smoke-signal with low alpha */ /* */
+  border-left: 4px solid var(--text-primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .testimonial-quote {
   font-size: 1.05rem; /* Adjust as needed */
   line-height: 1.7;
   font-style: italic;
-  color: var(--smoke-signal); /* */
+  color: var(--text-primary); /* */
   margin: 0 0 1.5rem 0;
   position: relative;
 }
@@ -871,14 +898,14 @@ a {
 .testimonial-name {
   display: block;
   font-weight: 600; /* */
-  color: var(--smoke-signal); /* */
+  color: var(--text-primary); /* */
   font-size: 1rem;
 }
 
 .testimonial-title-company {
   display: block;
   font-size: 0.875rem;
-  color: var(--smoke-signal); /* */
+  color: var(--text-primary); /* */
   opacity: 0.75;
   margin-top: 0.25rem;
 }
@@ -902,3 +929,31 @@ a {
   }
 }
 
+.theme-toggle-button {
+  background: none;
+ 
+  color: var(--text-primary); /* Use theme variable */
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px; /* Make it pill-shaped or adjust as needed */
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem; /* Adjust size */
+  margin-left: 0.75rem; /* Space from nav links or hamburger icon */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex; /* To align emoji/icon and text if you add text */
+  align-items: center;
+  justify-content: center;
+  min-width: 50px; /* Ensure it has some width for the emoji */
+}
+
+.theme-toggle-button:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* Adjust focus style for toggle button if needed, similar to other icon-buttons */
+.theme-toggle-button:focus {
+  outline: 2px solid transparent; /* */
+  outline-offset: 2px; /* */
+  
+}

@@ -5,12 +5,18 @@ const AboutPage = () => {
     <section id="about-us" className="content-section page-padding">
       <h2>About Us</h2>
       <p>
-        We are a passionate team dedicated to creating cutting-edge playable ads
-        and engaging HTML5 games. Our mission is to blend creativity with technology
-        to deliver memorable interactive experiences that captivate users and
-        drive results for our clients.<br/>
-        At Sanvar Studio, we believe in the power of play and the art of interaction.
-        Let's build something amazing together!
+          We are a professional game development company dedicated to building
+          captivating and immersive games for web platforms. At ApexExp, we
+          specialize in creating high-performance 2D and 3D games, as well as
+          WebAR experiences, optimized for browsers on both desktop and mobile.
+          Our team combines technical expertise with creative storytelling to
+          deliver engaging, visually striking games tailored to your vision.
+          Whether it’s a branded mini-game, an educational tool, or an original
+          concept, we bring ideas to life with precision and flair. We also
+          offer interactive websites and gamified web experiences to enhance
+          user engagement and deliver lasting impact.<br/>
+          At Sanvar Studio, we believe in the power of play and the art of interaction.
+          Let's build something amazing together!
       </p>
       {/* You can add more structured content here: team, values, history etc. */}
     </section>
