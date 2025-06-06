@@ -14,9 +14,9 @@
 
 body.dark-mode { /* This class will be toggled on the body */
   /* Dark Mode Overrides */
-  --bg-primary: #2A2A2A;      /* Deep Charcoal */
-  --text-primary: #F5EADF;     /* Light Almond */
-  --bg-card: #383838;         /* Slightly lighter dark for cards */
+  --bg-primary: #000000;      /* Deep Charcoal */
+  --text-primary: #fce9c7;     /* Light Almond */
+  --bg-card: #0f0f0f;         /* Slightly lighter dark for cards */
   --border-color: #4D4D4D;    /* Darker border */
   --accent-primary: var(--text-primary); /* Light Almond for buttons */
   --accent-primary-text: var(--bg-primary); /* Deep Charcoal for text on buttons */
@@ -287,7 +287,7 @@ a {
   max-width: 900px; /* Max width for the video itself */
   height: auto;     /* Maintain aspect ratio */
   border-radius: 10px; /* Optional: for rounded corners */
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15); /* Optional: subtle shadow */
+  box-shadow: 0 5px 20px rgba(255, 170, 170, 0.15); /* Optional: subtle shadow */
 }
 
 .hero-text-container {

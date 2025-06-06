@@ -20,13 +20,12 @@ const HomePage = () => {
                 <div className="hero-content">
                     <h1>
                         Sanvar Studio:
-                        
                     </h1>
                     <h1>
                         Crafting Interactive Experiences.
                     </h1>
                     <p>
-                        Pioneering 3D Games, Web Development, HTML5 Games & Playable Ads.
+                        Pioneering 2D & 3D Games, Web Development, HTML5 Games & Playable Ads.
                     </p>
                 </div>
             </div>
