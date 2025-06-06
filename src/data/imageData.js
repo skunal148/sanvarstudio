@@ -1,9 +1,3 @@
-import React from 'react';
-
-// Styles for this page will be in App.css
-// import './PortfolioPage.css'; // Only if you want very specific separate styles
-
-// Sample data for portfolio items - replace with your actual projects
 const portfolioItems = [
   {
     "id": "truecaller-playable-ad",
@@ -155,53 +149,49 @@ const portfolioItems = [
   }
 ];
 
-const PortfolioPage = () => {
-  return (
-       <section id="portfolio" className="content-section page-padding">
-      <h2>Our Work</h2>
-      <div className="portfolio-grid">
-        {portfolioItems.map(item => (
-          <div key={item.id} className="portfolio-item">
-            {/* Thumbnail is now a clickable link if playableUrl exists */}
-            {item.thumbnailUrl && item.playableUrl && item.playableUrl !== "#" ? (
-              <a
-                href={item.playableUrl}
-                target="_blank" // Opens the game in a new tab
-                rel="noopener noreferrer"
-                className="portfolio-thumbnail-link" // New class for styling the link
-                aria-label={`Play ${item.title}`} // Accessibility improvement
-              >
-                
-                <img
-                  src={item.thumbnailUrl}
-                  alt={`${item.title} thumbnail`}
-                  className="portfolio-item-image"
-                />
-              </a>
-            ) : item.thumbnailUrl ? (
-              // Fallback: If no playableUrl, just display the image (not clickable)
-              <img
-                src={item.thumbnailUrl}
-                alt={`${item.title} thumbnail`}
-                className="portfolio-item-image"
-              />
-            ) : null}
+
+  const services = [
+    {
+      imgSrc: "/thumbnails/playable-ad-thumbnail.png",
+      imgAlt: "Playable Ad Development Thumbnail",
+      title: "Playable Ads",
+      description: "We specialize in creating captivating and high-performance playable ads that drive user engagement and conversions."
+    },
+    {
+      imgSrc: "/thumbnails/html5-game-thumbnail.jpg",
+      imgAlt: "HTML5 Game Development Thumbnail",
+      title: "HTML5 Games",
+      description: "From concept to launch, we build engaging HTML5 games that run seamlessly across desktop and mobile browsers."
+    },
+    {
+      imgSrc: "/thumbnails/3d-game-dev.jpg",
+      imgAlt: "3D Game Development Thumbnail",
+      title: "3D Games",
+      description: "We create immersive and high-performance 3D games for various platforms."
+    },
+    {
+      imgSrc: "/thumbnails/web-ar-exp.jpg",
+      imgAlt: "Web AR Experiences Thumbnail",
+      title: "Web AR Experiences",
+      description: "We develop augmented reality solutions accessible directly through web browsers"
+    },
+    {
+      imgSrc: "/thumbnails/gameDevelopment.png",
+      imgAlt: "Web Development Thumbnail",
+      title: "Web Development",
+      description: "Our web development services focus on creating responsive, high-performing, and user-friendly websites tailored to your brand."
+    }
+  ];
 
 
-            <div className="portfolio-item-content">
-              <h3>{item.title}</h3>
-              {item.technologies && (
-                <p className="portfolio-item-tech">
-                  <strong>Technologies:</strong> {item.technologies}
-                </p>
-              )}
-              {/* "Try Now" button is removed */}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
-
-export default PortfolioPage;
+  const brandsData = [
+    { name: 'Alps Blockchain', logoUrl: '/brands/Alps.png' },
+    { name: 'Alpine Fresh', logoUrl: '/brands/AlpineFresh.png' },
+    { name: 'Happn', logoUrl: '/brands/Happn.png' },
+    { name: 'Mthree', logoUrl: '/brands/mthree.png' },
+    { name: 'Portal One', logoUrl: '/brands/portalone.jpeg' },
+    { name: 'Rival Club', logoUrl: '/brands/Rival Club.png' },
+    { name: 'TrueCaller', logoUrl: '/brands/truecaller.png' },
+    { name: 'Linen Chest', logoUrl: '/brands/Linen Chest.png' },
+    { name: 'Upily', logoUrl: '/brands/upily.jpeg' },
+];
