@@ -232,7 +232,6 @@ a {
 
 /* --- Hero Section Styles --- */
 .hero-section {
-  min-height: 100vh;
   background-color: var(--bg-primary); /* */
   display: flex;            /* MODIFIED: Use flexbox for side-by-side layout */
   flex-direction: row;      /* MODIFIED: Arrange items in a row */
@@ -333,8 +332,8 @@ a {
     align-items: flex-start; /* */
     gap: 2rem; /* */
     /* Desktop specific padding for hero if different from mobile */
-    padding-left: 2rem; /* */
-    padding-right: 2rem; /* */
+    padding-left: 3rem; /* */
+    padding-right: 3rem; /* */
     padding-top: calc(60px + 3rem); /* Example for desktop */ /* */
   }
 }
@@ -408,8 +407,8 @@ a {
 
 @media (min-width: 901px) {
   .content-section{
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
 
@@ -786,9 +785,9 @@ a {
 /* --- Brands Section Styles --- */
 .brands-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
-    gap: 0.75rem;
-    margin-top: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin: 0 auto;
     padding: 2rem 0;
     width: 100%;
     box-sizing: border-box;
